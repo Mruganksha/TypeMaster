@@ -1,53 +1,81 @@
-body{
-    background: rgb(209, 199, 199);
-    text-align: center;
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
-.container{
-    max-width: 600px;
-    margin: auto;
-    background: white;
-    padding: 2rem;
-    border-radius: 10px;
-   
+body {
+  background: #d1c7c7;
+  font-family: Arial, sans-serif;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
-.container h1{
-  color: grey;
-  font-weight: bolder;
+.container {
+  background: white;
+  padding: 2rem 2.5rem;
+  border-radius: 12px;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+  width: 90%;
+  max-width: 700px;
+  text-align: center;
+}
+
+.container h1 {
+  color: #4a4a4a;
+  margin-bottom: 1rem;
+  font-weight: bold;
 }
 
 #sentence {
   font-size: 1.2rem;
-  margin-bottom: 1rem;
+  margin: 1rem 0 2rem;
+  line-height: 1.8rem;
+  min-height: 3.5rem;
 }
 
-textarea {
-  width: 90%;
-  height: 100px;
-  font-size: 1rem;
-  padding: 1rem;
-  border: 1px solid #ccc;
-  border-radius: 5px;
-  background-color: #f1e6e6;
-}
-
-.stats {
-  margin-top: 1rem;
-  font-size: 1rem;
+#input {
+  opacity: 0;
+  position: absolute;
 }
 
 button {
-  margin-top: 1rem;
+  margin: 0.5rem;
   padding: 10px 20px;
   font-size: 1rem;
   border: none;
-  border-radius: 5px;
+  border-radius: 6px;
   background: #b79ebf;
   color: white;
-  cursor: pointer;
+  transition: background 0.3s ease;
 }
 
 button:hover {
   background: #a991ac;
+}
+
+.stats {
+  margin-top: 1.5rem;
+  font-size: 1rem;
+  color: #333;
+}
+
+#message {
+  margin-top: 1rem;
+  font-size: 1.1rem;
+  font-weight: bold;
+}
+
+.correct {
+  color: green;
+}
+
+.incorrect {
+  color: red;
+}
+
+.current {
+  border-bottom: 2px solid blue;
 }
