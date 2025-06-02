@@ -1,11 +1,3 @@
-const sentences = [
-  "JavaScript is a versatile language used for both frontend and backend development.",
-  "Typing tests help improve speed, accuracy, and overall confidence in keyboard usage.",
-  "Consistent practice is the key to becoming a proficient and confident coder.",
-  "Front-end development involves HTML, CSS, JavaScript, and frameworks like React.",
-  "Debugging code is a crucial skill that separates good developers from great ones."
-];
-
 const sentencel = document.getElementById("sentence");
 const inputl = document.getElementById("input");
 const time1 = document.getElementById("time");
@@ -28,8 +20,28 @@ function renderSentence(sentence) {
   });
 }
 
-function startTest() {
-  currentSentence = sentences[Math.floor(Math.random() * sentences.length)];
+async function fetchSentence() {
+  try {
+    const res = await fetch("https://baconipsum.com/api/?type=meat-and-filler&paras=1");
+    const data = await res.json();
+    const fullText = data.slice(0, 2).join(" ");
+    const trimmedText = fullText.length > 300 ? fullText.slice(0, 300) : fullText;
+    const sentences = trimmedText.match(/[^\.!\?]+[\.!\?]+/g); 
+    const longSentence = sentences ? sentences.join(" ").trim() : trimmedText;
+    return longSentence;
+  } catch (error) {
+    console.error("Error fetching the sentence:", error);
+    return "Default fallback sentence if API fails.";
+  }
+}
+
+function calculateWPM(typedText, seconds) {
+  const words = typedText.trim().split(/\s+/).length;
+  return seconds > 0 ? Math.round((words / seconds) * 60) : 0;
+}
+
+async function startTest() {
+  currentSentence = await fetchSentence(); 
   renderSentence(currentSentence);
 
   inputl.value = "";
@@ -78,6 +90,18 @@ function stopTest() {
     : 0;
 
   accuracyl.textContent = accuracy;
+
+   const timeTaken = parseInt(time1.textContent);
+  const wpm = calculateWPM(typedText, timeTaken);
+  document.getElementById("wpm").textContent = wpm;
+
+  if (accuracy === 100 && typedText.length === currentSentence.length) {
+    message.textContent = "Congratulations! You are perfect!";
+    message.style.color = "green";
+  } else {
+    message.textContent = "Better luck next time!";
+    message.style.color = "red";
+  }
 
   if (accuracy === 100 && typedText.length === currentSentence.length) {
     message.textContent = "Congratulations! You are perfect!";
