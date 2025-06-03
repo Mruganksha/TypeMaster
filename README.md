@@ -1,20 +1,24 @@
 # TypeMaster
 
-This is a basic web app to test your typing speed and accuracy. It shows how fast and accurately you can type a randomly generated sentence.
+A simple web app to test your typing speed and accuracy using randomly generated sentences.
 
-Features
-Shows random sentences 
-Calculates typing speed (WPM)
-Shows accuracy percentage
-Highlights correct and incorrect characters
+## Features
 
-How to Use
-Click Start to begin.
-Type the given sentence.
-Click Stop or finish typing to see your results.
+- Random 3–4 line sentences (via Bacon Ipsum API)
+- Typing speed (WPM) calculation
+- Accuracy percentage
+- Highlights correct and incorrect characters
 
-Technologies Used
-HTML
-CSS
-JavaScript
-Bacon Ipsum API
+## How to Use
+
+1. Click **Start** to begin the test.
+2. Type the given sentence as accurately and quickly as possible.
+3. Click **Stop** or finish typing to see your results.
+
+## Tech Stack
+
+- HTML
+- CSS
+- JavaScript
+- Bacon Ipsum API
+
